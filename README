@@ -17,7 +17,6 @@ Building libtmrm
 libtmrm has the following requirements:
 
  * LibYAML (http://pyyaml.org/wiki/LibYAML)
- * OSSP uuid (http://www.ossp.org/pkg/lib/uuid/)
  * PostgreSQL (http://www.postgresql.org)
    8.x is fine, older versions might work as well. This is the only 
    supported backend right now. Later versions of libtmrm will support
@@ -26,7 +25,7 @@ libtmrm has the following requirements:
  * more dependencies to come!
 
 Build the package:
-./configure --with-yaml=/prefix/to/libyaml --with-ossp-uuid=uuid-config \
+./configure --with-yaml=/prefix/to/libyaml \
     --with-postgresql=yes
 make
 # make install
