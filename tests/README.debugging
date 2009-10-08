@@ -1,0 +1,23 @@
+
+Debugging tests with gdb can be hard. Check out 
+
+http://www.buzztard.org/index.php/Debugging
+
+for some hints.
+
+make check
+cd tests
+glibtool --mode=execute gdb ./tmrm_tests
+
+(or glibtool --mode=execute gdb ./tmrm_tests -c core.xxxxx);
+
+The test suite forks new processes for every test. This can be disabled in the
+test suite by defining an environment variable CK_FORK with the value "no" or
+by calling the following function with CK_NOFORK:
+
+ void srunner_set_fork_status (SRunner * sr, enum fork_status fstat);
+
+See 
+http://check.sourceforge.net/doc/check.html/No-Fork-Mode.html#No-Fork-Mode
+
+

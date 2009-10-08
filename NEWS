@@ -1,0 +1,13 @@
+Version 0.0.3
+ * Removed ossp-uuid-dependence
+ * New dependency: libyaml 1.1 or higher
+ * YAML import/export
+ * Lower memory usage for proxies
+ * Removed support for custom labels, all labels are represented as
+   ints internally
+
+Version 0.0.2
+libtmrm now depends on the ossp-uuid library.
+
+Everything is brand new. Still working on the first public release.
+Version 0.0.1

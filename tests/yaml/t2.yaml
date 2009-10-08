@@ -1,0 +1,30 @@
+%YAML 1.1
+---
+subject_map: 'base'
+proxies:
+- bottom: {libtmrm_bottom: libtmrm_bottom}
+- item_identifier: {bottom: "item-identifier"}
+- subject_identifier: {bottom: "subject-identifier"}
+- subject_locator: {bottom: "subject-locator"}
+- member: {bottom: "member"}
+- type: {bottom: "type"}
+- subject: {bottom: "subject"}
+- scope: {bottom: "scope"}
+- reified: {bottom: "reified"}
+- reifier: {bottom: "reifier"}
+...
+---
+subject_map: 'TMDM-ontology'
+proxies:
+- subject:
+    item_identifier: "http://psi.topicmaps.org/iso13250/model/subject"
+- topic:
+    item_identifier: "http://psi.topicmaps.org/iso13250/model/topic"
+- "*":
+    type: supertype_subtype 
+    scope: []
+    supertype: subject
+    subtype: topic
+- supertype_subtype: {} # isa topic
+...
+

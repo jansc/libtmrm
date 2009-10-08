@@ -1,0 +1,63 @@
+This document is meant as my personal reference. If you don't know what
+all this means, ignore it or ask me about it ;-)
+
+libtmrm architecture
+--------------------
+
+ * Design and implement tracing of changes in the backend ("event handler").
+   The event handler should work across processes, so a persistent queue of
+   some kind is needed.
+   Should the functionality be the same for all backends? Should we provide
+   an API for the event system? Take a look at tuple spaces/java spaces.
+
+ * Versioning of proxies?
+ * Reference counting for proxies?
+
+ 1. Implement the simple path language.
+    Check test code coverage
+    Provide transitive variants of all path language functions
+ 2. Implement TMDM on top of it => libtmdm
+ 3. Implement the more complex path language => TMQL :-)
+
+
+Practical stuff
+---------------
+
+ * Implement error handling. Functions that return a pointer return NULL
+   on error, but there is no way to get more information about the error.
+   => This needs to be done asap because it changes the API!
+   => Add error information to subject map object (or subject map system)
+ * Unicode support. All strings should at least be "unsigned char" so that
+   UTF-8 could be used as an internal format.
+ * Test for proxy-sameness
+ * Implement merging of subject maps (trivial)
+ * Implement merging of equal proxies:
+    => [DONE] Implement some form of hashing in the postgres-model
+ * Make it easy to use dmalloc (http://dmalloc.com) for debugging
+
+ * Check out http://tpl.sourceforge.net/ for serialization
+
+
+Command line client
+-------------------
+
+Would be nice to have: a command line client to create proxies and 
+properties, and the simple path language.
+
+Could use readline (http://tiswww.case.edu/php/chet/readline/readline.html),
+but readline is GPL code. Should be ok for a standalone program, though.
+
+"label" ::= [a-zA-Z][a-zA-Z0-9_\-]+
+"command" ::= "\" [a-zA-Z]+
+"literal" ::= STRING | INTEGER | DECIMAL | DOUBLE
+
+\createproxy PROXY
+\createproperty PROXY PROXY (PROXY|LITERAL)
+\deleteproxy PROXY
+\addtype PROXY(p) PROXY(type)
+\addclass PROXY(p) PROXY(class)
+\show PROXY => Shows a list of all properties
+PROXY -> => Returns a list of all values of the proxy "label"
+PROXY \ => Returns a list of keys of the proxy "label"
+{label1, label2} => Returns a multiset with the proxies"label1" and "label2"
+

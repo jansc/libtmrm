@@ -1,0 +1,5 @@
+To test a file with splint, run the following command in the src directory.
+
+$ splint -weak -I. -I/opt/local/include/postgresql83/ libtmrm.c
+
+$ splint -weak -I. -I/opt/local/include/postgresql83/ -DHAVE_CONFIG_H tmrm_proxy.c

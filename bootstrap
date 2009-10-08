@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -x
+#autoheader
+#automake --foreign --add-missing --copy
+autoconf
+autoheader
+automake --add-missing --force-missing --copy
+aclocal
+
+autoreconf

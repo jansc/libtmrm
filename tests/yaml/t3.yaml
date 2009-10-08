@@ -1,0 +1,46 @@
+%YAML 1.1
+---
+subject_map: 'mymap'
+proxies:
+  #libtmrm:bottom: {}
+  p0:
+    libtmrm_bottom: p0
+  p1:
+    libtmrm_bottom: p1
+  p2:
+    libtmrm_bottom: p2
+  p3:
+    libtmrm_bottom: p3
+  p4:
+    libtmrm_bottom: p4
+  "189fe8e4-073e-11de-9b09-df62b7c36efd":
+    superclass: !proxy p3
+    subclass: !proxy p4
+  superclass:
+    libtmrm_bottom: superclass
+  subclass:
+    libtmrm_bottom: subclass
+  '18a37612-073e-11de-a637-07ab8a6e0b2d':
+    superclass: !proxy p2
+    subclass: !proxy p4
+  '18a461c6-073e-11de-b594-b3e9267b2241':
+    superclass: !proxy p1
+    subclass: !proxy p2
+  '18a54cee-073e-11de-900a-f324eff4c593':
+    superclass: !proxy p1
+    subclass: !proxy p3
+  '18a65850-073e-11de-b26c-b71ef5742465':
+    superclass: !proxy p0
+    subclass: !proxy p3
+  '18a71dbc-073e-11de-a364-6317b82b529d':
+    superclass: !proxy p4
+    subclass: !proxy p0
+  '18a9d82c-073e-11de-87bf-3bd39c6d9423':
+    type: !proxy p3
+    instance: !proxy p1
+  type:
+    libtmrm_bottom: type
+  instance:
+    libtmrm_bottom: instance
+...
+

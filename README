@@ -1,0 +1,51 @@
+Creating the database
+---------------------
+
+Currently, libtmrm only implements a postgresql backend. The database user 
+(postgres), the name of the database (tmrm_test) and the database server 
+(localhost) are hardcoded in the test suite test/tmrm_tests.c. *YIKES!*
+
+The schema of the database can be found in the sql/ directory. libtmrm does
+not (yet) create the schema automatically, so you have to create the tables
+by hand. Remember to set the permissions right!
+
+
+
+Building libtmrm
+----------------
+
+libtmrm has the following requirements:
+
+ * LibYAML (http://pyyaml.org/wiki/LibYAML)
+ * OSSP uuid (http://www.ossp.org/pkg/lib/uuid/)
+ * PostgreSQL (http://www.postgresql.org)
+   8.x is fine, older versions might work as well. This is the only 
+   supported backend right now. Later versions of libtmrm will support
+   BerkeleyDB and an in-memory implementation
+ * Check (http://check.sourceforge.net) for unit testing
+ * more dependencies to come!
+
+Build the package:
+./configure --with-yaml=/prefix/to/libyaml --with-ossp-uuid=uuid-config \
+    --with-postgresql=yes
+make
+# make install
+
+Se README.osx for details (especially for switches to the configure command
+when building libtmrm with libraries from mac ports.
+
+
+Running the test suite
+----------------------
+
+There is no main program, so you might want to run the test suite to see
+libtmrm in action.
+
+
+To run the test suite run the following command from the main directory:
+
+make check
+
+
+Have fun!
+

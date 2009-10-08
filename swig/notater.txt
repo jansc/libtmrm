@@ -1,0 +1,29 @@
+
+swig -python libtmrm.i 
+
+gcc -c libtmrm_wrap.c -I/opt/local/include/python2.5 -I/opt/local/lib/python2.5 -I../src -L../src
+
+
+# OS-X:
+ld -bundle -flat_namespace -undefined suppress ../src/libtmrm.o libtmrm_wrap.o -o libtmrm.so
+
+# linux (?)
+ld -shared ../src/libtmrm.o libtmrm_wrap.o -o libtmrm.so
+
+
+
+enoch:swig reidar$ /opt/local/bin/python2.5
+Python 2.5.2 (r252:60911, Aug  6 2008, 22:00:45) 
+[GCC 4.0.1 (Apple Inc. build 5465)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import libtmrm
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: dlopen(./libtmrm.so, 2): Symbol not found: _tmrm_init_storage_db
+  Referenced from: /Users/reidar/dev/libtmrm/swig/libtmrm.so
+  Expected in: flat namespace
+
+>>> 
+
+
+ld -bundle -flat_namespace ../src/.libs/libtmrm.dylib libtmrm_wrap.o -o libtmrm.so

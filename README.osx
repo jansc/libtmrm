@@ -1,0 +1,12 @@
+To compile the package on OS X Leopard with Macports run the following command:
+
+CPPFLAGS="-I/opt/local/include" && \
+LDFLAGS="-L/opt/local/lib" && \
+./configure --with-bdb-lib=/opt/local/lib/db44 \
+    --with-bdb-include=/opt/local/include/db44 \
+    --with-postgresql=yes \
+    --with-yaml=/opt/local
+make
+
+To build the tests, run 
+make check
